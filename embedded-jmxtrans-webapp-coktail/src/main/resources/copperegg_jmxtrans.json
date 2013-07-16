@@ -1,0 +1,127 @@
+{
+    "queries": [
+        {
+          "objectName": "java.lang:type=ClassLoading",
+          "resultAlias": "jvm.loadedClasses",
+          "attributes": [
+              {
+                "name": "LoadedClassCount",
+                "type": "gauge"
+              }
+            ]
+        },
+        {
+            "objectName": "java.lang:type=Threading",
+            "resultAlias": "jvm.thread",
+            "attributes": [
+                {
+                  "name": "ThreadCount",
+                  "type": "gauge"
+                },
+                {
+                  "name": "DaemonThreadCount",
+                  "type": "gauge"
+                }
+            ]
+        },        
+        {
+            "objectName": "java.lang:type=Runtime",
+            "resultAlias": "jvm.runtime",
+            "attributes": [
+                "Uptime"
+            ]
+        },
+        {
+            "objectName": "cocktail:type=ShoppingCartController,name=ShoppingCartController",
+            "resultAlias": "",
+            "attributes": [
+                {
+                    "name": "SalesOrdersCounter",
+                    "resultAlias": "sales.ordersCounter"
+                },
+                {
+                    "name": "SalesItemsCounter",
+                    "resultAlias": "sales.itemsCounter"
+                },
+                {
+                    "name": "SalesRevenueInCentsCounter",
+                    "resultAlias": "sales.revenueInCentsCounter"
+                }
+            ]
+
+        },
+        {
+            "objectName": "cocktail:type=CocktailController,name=CocktailController",
+            "resultAlias": "cocktail",
+            "attributes": [
+                "AddedCommentCount",
+                "CreatedCocktailCount",
+                "DisplayedCocktailCount",
+                "DisplayedHomeCount",
+                "SearchedCocktailCount",
+                "UpdatedCocktailCount"
+            ]
+
+        },
+        {
+            "comment": "tomcat7",
+            "objectName": "Catalina:type=Manager,path=/,host=localhost",
+            "resultAlias": "website",
+            "attributes": [
+                {
+                    "name": "activeSessions",
+                    "resultAlias": "visitors.activeGauge"
+                },
+                {
+                    "name": "sessionCounter",
+                    "resultAlias": "visitors.newVisitorsCounter"
+                }
+            ]
+        },
+        {
+            "comment": "tomcat6",
+            "objectName": "Catalina:type=Manager,context=/,host=localhost",
+            "resultAlias": "website",
+            "attributes": [
+                {
+                    "name": "activeSessions",
+                    "resultAlias": "visitors.activeGauge"
+                },
+                {
+                    "name": "sessionCounter",
+                    "resultAlias": "visitors.newVisitorsCounter"
+                }
+            ]
+        },
+        {
+            "comment": "cloudbees-tomcat6",
+            "objectName": "localEngine:type=Manager,path=/,host=localhost",
+            "resultAlias": "website",
+            "attributes": [
+                {
+                    "name": "activeSessions",
+                    "resultAlias": "visitors.activeGauge"
+                },
+                {
+                    "name": "sessionCounter",
+                    "resultAlias": "visitors.newVisitorsCounter"
+                }
+            ]
+        }
+    ], "outputWriters": [
+    {
+        "@class": "org.jmxtrans.embedded.output.CopperEggWriter",
+        "settings": {
+            "source": "${CopperEgg.source:#hostname#}",
+            "username": "${CopperEgg.username:BoboTheClown}",
+            "token": "${CopperEgg.token:uADqMEeNdgw1kL59}",
+            "enabled": "${CopperEgg.enabled:true}"
+        }
+    }
+],
+    "queryIntervalInSeconds": "${jmxtrans.queryIntervalInSeconds:15}",
+    "numQueryThreads": "${jmxtrans.numQueryThreads:2}",
+    "numExportThreads": "${jmxtrans.numExportThreads:2}",
+    "exportIntervalInSeconds": "${jmxtrans.exportIntervalInSeconds:15}",
+    "exportBatchSize": "${jmxtrans.exportBatchSize:50}"
+}
