@@ -113,8 +113,8 @@
         "@class": "org.jmxtrans.embedded.output.CopperEggWriter",
         "settings": {
             "source": "${CopperEgg.source:#hostname#}",
-            "username": "${CopperEgg.username:BoboTheClown}",
-            "token": "${CopperEgg.token:uADqMEeNdgw1kL59}",
+            "username": "${CopperEgg.username:YOUR_USERNAME_HERE}",
+            "token": "${CopperEgg.token:YOUR_APIKEY_HERE}",
             "enabled": "${CopperEgg.enabled:true}"
         }
     }
