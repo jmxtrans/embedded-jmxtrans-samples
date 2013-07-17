@@ -13,7 +13,7 @@ To run the demo, please follow these steps:
   You can clone it and build as follows:
 
 ```xml
-git clone https://github.com/sjohnsoncopperegg/embedded-jmxtrans.git
+git clone https://github.com/CopperEgg/embedded-jmxtrans.git
 cd embedded-jmxtrans
 mvn install dependency:go-offline
 ```
@@ -21,7 +21,7 @@ mvn install dependency:go-offline
 ### 2. Clone the CopperEgg fork of the embedded-jmxtrans-samples repo:
 
 ```xml
-git clone https://github.com/sjohnsoncopperegg/embedded-jmxtrans-samples.git
+git clone https://github.com/CopperEgg/embedded-jmxtrans-samples.git
 ```
 
 ### 3. Replace jmxtrans.json with copperegg_jmxtrans.json, then edit jmxtrans.json:
