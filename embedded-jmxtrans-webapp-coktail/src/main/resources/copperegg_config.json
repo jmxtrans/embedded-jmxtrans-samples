@@ -4,7 +4,7 @@
       {
         "name":"Sample_jvm_metrics",
         "label":"Sample jvm Metrics",
-        "frequency":60,
+        "frequency":15,
         "metrics":
           [
             {"type":"ce_gauge","name":"jvm.os.FreePhysicalMemorySize","unit":"bytes"},
@@ -36,7 +36,7 @@
       {
         "name":"Sample_tomcat_metrics",
         "label":"Tomcat Metrics",
-        "frequency":60,
+        "frequency":15,
         "metrics":
           [
             {"type":"ce_gauge","name":"tomcat.thread-pool.currentThreadsBusy","unit":"threads"},
@@ -59,7 +59,7 @@
       {
         "name":"Sample_Cocktail_App",
         "label":"Cocktail App Metrics",
-        "frequency":60,
+        "frequency":15,
         "metrics":
           [
             {"type":"ce_counter","name":"sales.ordersCounter","unit":"orders"},
