@@ -57,7 +57,7 @@
         ]
       },
       {
-        "name":"Sample_Cocktail_App",
+        "name":"Sample_Cocktail_App_metrics",
         "label":"Cocktail App Metrics",
         "frequency":15,
         "metrics":
