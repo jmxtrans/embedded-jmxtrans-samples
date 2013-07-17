@@ -113,8 +113,8 @@
         "@class": "org.jmxtrans.embedded.output.CopperEggWriter",
         "settings": {
             "source": "${CopperEgg.source:#hostname#}",
-            "username": "${CopperEgg.username:YOUR_USERNAME_HERE}",
-            "token": "${CopperEgg.token:YOUR_APIKEY_HERE}",
+            "username": "${CopperEgg.username:Buttons}",
+            "token": "${CopperEgg.token:uADqMEeNdgw1kL59}",
             "enabled": "${CopperEgg.enabled:true}"
         }
     }
@@ -123,5 +123,5 @@
     "numQueryThreads": "${jmxtrans.numQueryThreads:2}",
     "numExportThreads": "${jmxtrans.numExportThreads:2}",
     "exportIntervalInSeconds": "${jmxtrans.exportIntervalInSeconds:15}",
-    "exportBatchSize": "${jmxtrans.exportBatchSize:50}"
+    "exportBatchSize": "${jmxtrans.exportBatchSize:30}"
 }
