@@ -492,7 +492,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "Sample_Cocktail_App",
+                "Sample_Cocktail_App_metrics",
                 "0",
                 "sales.ordersCounter"
               ]
@@ -502,7 +502,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "Sample_Cocktail_App",
+                "Sample_Cocktail_App_metrics",
                 "1",
                 "sales.itemsCounter"
               ]
@@ -512,7 +512,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "Sample_Cocktail_App",
+                "Sample_Cocktail_App_metrics",
                 "2",
                 "sales.revenueInCentsCounter"
               ]
@@ -522,7 +522,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "Sample_Cocktail_App",
+                "Sample_Cocktail_App_metrics",
                 "3",
                 "cocktail.CreatedCocktailCount"
               ]
@@ -532,7 +532,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "Sample_Cocktail_App",
+                "Sample_Cocktail_App_metrics",
                 "4",
               "cocktail.SearchedCocktailCount"
               ]
@@ -542,7 +542,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "Sample_Cocktail_App",
+                "Sample_Cocktail_App_metrics",
                 "5",
                 "cocktail.DisplayedHomeCount"
               ]
@@ -552,7 +552,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "Sample_Cocktail_App",
+                "Sample_Cocktail_App_metrics",
                 "6",
                 "cocktail.DisplayedCocktailCount"
               ]
@@ -562,7 +562,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "Sample_Cocktail_App",
+                "Sample_Cocktail_App_metrics",
                 "7",
                 "cocktail.AddedCommentCount"
               ]
@@ -572,7 +572,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "Sample_Cocktail_App",
+                "Sample_Cocktail_App_metrics",
                 "8",
                 "cocktail.UpdatedCocktailCount"
               ]
