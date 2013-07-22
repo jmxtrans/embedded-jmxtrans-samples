@@ -23,7 +23,14 @@
                   "type": "gauge"
                 }
             ]
-        },        
+        }, 
+        {
+            "objectName": "java.lang:type=MemoryPool,name=*",
+            "resultAlias": "jvm.memorypool.%name%",
+            "attributes": [
+                "Usage"
+            ]
+        },            
         {
             "objectName": "java.lang:type=Runtime",
             "resultAlias": "jvm.runtime",

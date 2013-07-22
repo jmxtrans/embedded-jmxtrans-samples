@@ -12,19 +12,19 @@
             {"type":"ce_gauge_f","name":"jvm.os.SystemLoadAverage"},
             {"type":"ce_gauge","name":"jvm.os.OpenFileDescriptorCount","unit":"descriptors"},
             {"type":"ce_gauge","name":"jvm.os.CommittedVirtualMemorySize","unit":"bytes"},
-            {"type":"ce_gauge","name":"jvm.os.ProcessCpuTime","unit":"seconds"},
-            {"type":"ce_counter","name":"jvm.runtime.Uptime","unit":"seconds"},
+            {"type":"ce_gauge","name":"jvm.os.ProcessCpuTime","unit":"nanoseconds"},
+            {"type":"ce_counter","name":"jvm.runtime.Uptime","unit":"milliseconds"},
             {"type":"ce_gauge","name":"jvm.loadedClasses.LoadedClassCount","unit":"classes"},
             {"type":"ce_gauge","name":"jvm.thread.ThreadCount","unit":"threads"},
             {"type":"ce_gauge","name":"jvm.thread.DaemonThreadCount","unit":"threads"},
             {"type":"ce_gauge","name":"jvm.gc.Copy.CollectionCount","unit":"total collections"},
-            {"type":"ce_gauge","name":"jvm.gc.Copy.CollectionTime","unit":"seconds"},
+            {"type":"ce_gauge","name":"jvm.gc.Copy.CollectionTime","unit":"milliseconds"},
             {"type":"ce_gauge","name":"jvm.gc.MarkSweepCompact.CollectionCount","unit":"total collections"},
-            {"type":"ce_gauge","name":"jvm.gc.MarkSweepCompact.CollectionTime","unit":"seconds"}
+            {"type":"ce_gauge","name":"jvm.gc.MarkSweepCompact.CollectionTime","unit":"milliseconds"}
          ]
       },
       {
-        "name":"heap_memory",
+        "name":"sample_heap_memory",
         "label":"Heap memory",
         "frequency":15,
         "metrics":
@@ -33,7 +33,7 @@
         ]
       },
       {
-        "name":"nonheap_memory",
+        "name":"sample_nonheap_memory",
         "label":"NonHeap memory",
         "frequency":15,
         "metrics":
@@ -65,7 +65,7 @@
             {"type":"ce_gauge","name":"tomcat.thread-pool.currentThreadCount","unit":"threads"},
             {"type":"ce_counter","name":"tomcat.global-request-processor.bytesSent","unit":"bytes"},
             {"type":"ce_counter","name":"tomcat.global-request-processor.bytesReceived","unit":"bytes"},
-            {"type":"ce_counter","name":"tomcat.global-request-processor.processingTime","unit":"seconds"},
+            {"type":"ce_counter","name":"tomcat.global-request-processor.processingTime","unit":"milliseconds"},
             {"type":"ce_counter","name":"tomcat.global-request-processor.errorCount","unit":"errors"},
             {"type":"ce_counter","name":"tomcat.global-request-processor.requestCount","unit":"requests"}
         ]
@@ -76,7 +76,7 @@
         "frequency":15,
         "metrics":
         [
-          {"type":"ce_counter","name":"tomcat.servlet.processingTime","unit":"seconds"},
+          {"type":"ce_counter","name":"tomcat.servlet.processingTime","unit":"milliseconds"},
           {"type":"ce_counter","name":"tomcat.servlet.errorCount","unit":"errors"},
           {"type":"ce_counter","name":"tomcat.servlet.requestCount","unit":"requests"}
         ]
@@ -257,7 +257,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "heap_memory",
+                "sample_heap_memory",
                 "0",
                 "jvmHeapMemoryUsage"
               ]
@@ -267,7 +267,7 @@
               "style":"values",
               "match":"all",
               "metric":[
-                "nonheap_memory",
+                "sample_nonheap_memory",
                 "0",
                 "jvmNonHeapMemoryUsage"
               ]
