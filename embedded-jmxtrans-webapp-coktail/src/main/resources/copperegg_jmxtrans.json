@@ -55,59 +55,13 @@
             "resultAlias": "cocktail",
             "attributes": [
                 "AddedCommentCount",
-                "CreatedCocktailCount",
                 "DisplayedCocktailCount",
                 "DisplayedHomeCount",
-                "SearchedCocktailCount",
-                "UpdatedCocktailCount"
+                "SearchedCocktailCount"
             ]
 
-        },
-        {
-            "comment": "tomcat7",
-            "objectName": "Catalina:type=Manager,path=/,host=localhost",
-            "resultAlias": "website",
-            "attributes": [
-                {
-                    "name": "activeSessions",
-                    "resultAlias": "visitors.activeGauge"
-                },
-                {
-                    "name": "sessionCounter",
-                    "resultAlias": "visitors.newVisitorsCounter"
-                }
-            ]
-        },
-        {
-            "comment": "tomcat6",
-            "objectName": "Catalina:type=Manager,context=/,host=localhost",
-            "resultAlias": "website",
-            "attributes": [
-                {
-                    "name": "activeSessions",
-                    "resultAlias": "visitors.activeGauge"
-                },
-                {
-                    "name": "sessionCounter",
-                    "resultAlias": "visitors.newVisitorsCounter"
-                }
-            ]
-        },
-        {
-            "comment": "cloudbees-tomcat6",
-            "objectName": "localEngine:type=Manager,path=/,host=localhost",
-            "resultAlias": "website",
-            "attributes": [
-                {
-                    "name": "activeSessions",
-                    "resultAlias": "visitors.activeGauge"
-                },
-                {
-                    "name": "sessionCounter",
-                    "resultAlias": "visitors.newVisitorsCounter"
-                }
-            ]
         }
+ 
     ], "outputWriters": [
     {
         "@class": "org.jmxtrans.embedded.output.CopperEggWriter",

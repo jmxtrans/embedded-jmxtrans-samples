@@ -13,57 +13,93 @@
             {"type":"ce_gauge","name":"jvm.os.OpenFileDescriptorCount","unit":"descriptors"},
             {"type":"ce_gauge","name":"jvm.os.CommittedVirtualMemorySize","unit":"bytes"},
             {"type":"ce_gauge","name":"jvm.os.ProcessCpuTime","unit":"seconds"},
-            {"type":"ce_gauge","name":"jvm.memory.HeapMemoryUsage.committed","unit":"bytes"},
-            {"type":"ce_gauge","name":"jvm.memory.HeapMemoryUsage.used","unit":"bytes"},
-            {"type":"ce_gauge","name":"jvm.memory.NonHeapMemoryUsage.committed","unit":"bytes"},
-            {"type":"ce_gauge","name":"jvm.memory.NonHeapMemoryUsage.used","unit":"bytes"},
             {"type":"ce_counter","name":"jvm.runtime.Uptime","unit":"seconds"},
             {"type":"ce_gauge","name":"jvm.loadedClasses.LoadedClassCount","unit":"classes"},
             {"type":"ce_gauge","name":"jvm.thread.ThreadCount","unit":"threads"},
             {"type":"ce_gauge","name":"jvm.thread.DaemonThreadCount","unit":"threads"},
-            {"type":"ce_counter","name":"jvm.gc.Copy.CollectionCount","unit":"total collections"},
-            {"type":"ce_counter","name":"jvm.gc.Copy.CollectionTime","unit":"seconds"},
-            {"type":"ce_counter","name":"jvm.gc.MarkSweepCompact.CollectionCount","unit":"total collections"},
-            {"type":"ce_counter","name":"jvm.gc.MarkSweepCompact.CollectionTime","unit":"seconds"},
+            {"type":"ce_gauge","name":"jvm.gc.Copy.CollectionCount","unit":"total collections"},
+            {"type":"ce_gauge","name":"jvm.gc.Copy.CollectionTime","unit":"seconds"},
+            {"type":"ce_gauge","name":"jvm.gc.MarkSweepCompact.CollectionCount","unit":"total collections"},
+            {"type":"ce_gauge","name":"jvm.gc.MarkSweepCompact.CollectionTime","unit":"seconds"}
+         ]
+      },
+      {
+        "name":"heap_memory",
+        "label":"Heap memory",
+        "frequency":15,
+        "metrics":
+        [
+            {"type":"ce_gauge_f","name":"jvmHeapMemoryUsage","unit":"bytes"}
+        ]
+      },
+      {
+        "name":"nonheap_memory",
+        "label":"NonHeap memory",
+        "frequency":15,
+        "metrics":
+        [
+            {"type":"ce_gauge_f","name":"jvmNonHeapMemoryUsage","unit":"bytes"}
+        ]
+      },
+      {
+        "name":"jmxtrans_metrics",
+        "label":"jmxtrans Metrics",
+        "frequency":15,
+        "metrics":
+        [
             {"type":"ce_counter","name":"jmxtrans.jmxtrans.CollectionCount","unit":"collections"},
-            {"type":"ce_counter","name":"jmxtrans.jmxtrans.CollectionDurationInNanos","unit":"nanoseconds"},
-            {"type":"ce_counter","name":"jmxtrans.jmxtrans.ExportDurationInNanos","unit":"nanoseconds"},
+            {"type":"ce_gauge","name":"jmxtrans.jmxtrans.CollectionDurationInNanos","unit":"nanoseconds"},
+            {"type":"ce_gauge","name":"jmxtrans.jmxtrans.ExportDurationInNanos","unit":"nanoseconds"},
             {"type":"ce_counter","name":"jmxtrans.jmxtrans.ExportCount","unit":"exports"},
             {"type":"ce_counter","name":"jmxtrans.jmxtrans.CollectedMetricsCount","unit":"metrics"},
             {"type":"ce_counter","name":"jmxtrans.jmxtrans.ExportedMetricsCount","unit":"metrics"}
          ]
       },
       {
-        "name":"tomcat_metrics",
-        "label":"Tomcat Metrics",
+        "name":"tomcat_global",
+        "label":"Tomcat Engine",
         "frequency":15,
         "metrics":
-          [
+        [
             {"type":"ce_gauge","name":"tomcat.thread-pool.currentThreadsBusy","unit":"threads"},
             {"type":"ce_gauge","name":"tomcat.thread-pool.currentThreadCount","unit":"threads"},
             {"type":"ce_counter","name":"tomcat.global-request-processor.bytesSent","unit":"bytes"},
             {"type":"ce_counter","name":"tomcat.global-request-processor.bytesReceived","unit":"bytes"},
             {"type":"ce_counter","name":"tomcat.global-request-processor.processingTime","unit":"seconds"},
             {"type":"ce_counter","name":"tomcat.global-request-processor.errorCount","unit":"errors"},
-            {"type":"ce_counter","name":"tomcat.global-request-processor.requestCount","unit":"requests"},
-            {"type":"ce_gauge","name":"tomcat.manager.activeSessions","unit":"sessions"},
-            {"type":"ce_counter","name":"tomcat.servlet.processingTime","unit":"seconds"},
-            {"type":"ce_counter","name":"tomcat.servlet.errorCount","unit":"errors"},
-            {"type":"ce_counter","name":"tomcat.servlet.requestCount","unit":"requests"},
-            {"type":"ce_gauge"  ,"name":"tomcat.data-source.numActive","unit":"connections"},
-            {"type":"ce_gauge"  ,"name":"tomcat.data-source.numIdle","unit":"connections"}
+            {"type":"ce_counter","name":"tomcat.global-request-processor.requestCount","unit":"requests"}
+        ]
+      },  
+      {
+        "name":"tomcat_servlet",
+        "label":"Tomcat Servlet Metrics",
+        "frequency":15,
+        "metrics":
+        [
+          {"type":"ce_counter","name":"tomcat.servlet.processingTime","unit":"seconds"},
+          {"type":"ce_counter","name":"tomcat.servlet.errorCount","unit":"errors"},
+          {"type":"ce_counter","name":"tomcat.servlet.requestCount","unit":"requests"}
+        ]
+      },
+      {
+        "name":"tomcat_manager",
+        "label":"Tomcat Manager Metrics",
+        "frequency":15,
+        "metrics":
+        [
+          {"type":"ce_gauge","name":"tomcat.manager.activeSessions","unit":"sessions"}
         ]
       }
     ],
   "dashboards" :
     [
       {
-        "name":"jvm_dash",
+        "name":"jvm_dashboard",
         "data":{
           "widgets":{
             "0":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
@@ -73,7 +109,7 @@
             },
             "1":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
@@ -83,7 +119,7 @@
             },
             "2":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
@@ -93,7 +129,7 @@
             },
             "3":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
@@ -103,7 +139,7 @@
             },
             "4":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
@@ -113,7 +149,7 @@
             },
             "5":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
@@ -123,328 +159,226 @@
             },
             "6":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
                 "6",
-                "jvm.memory.HeapMemoryUsage.committed"
+                "jvm.runtime.Uptime"
               ]
             },
             "7":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
                 "7",
-                "jvm.memory.HeapMemoryUsage.used"
+                "jvm.loadedClasses.LoadedClassCount"
               ]
             },
             "8":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
                 "8",
-                "jvm.memory.NonHeapMemoryUsage.committed"
+                "jvm.thread.ThreadCount"
               ]
             },
             "9":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
                 "9",
-                "jvm.memory.NonHeapMemoryUsage.used"
+                "jvm.thread.DaemonThreadCount"
               ]
             },
             "10":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
                 "10",
-                "jvm.runtime.Uptime"
+                "jvm.gc.Copy.CollectionCount"
               ]
             },
             "11":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
                 "11",
-                "jvm.loadedClasses.LoadedClassCount"
+                "jvm.gc.Copy.CollectionTime"
               ]
             },
             "12":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
                 "12",
-                "jvm.thread.ThreadCount"
+                "jvm.gc.MarkSweepCompact.CollectionCount"
               ]
             },
             "13":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
                 "jvm_metrics",
                 "13",
-                "jvm.thread.DaemonThreadCount"
+                "jvm.gc.MarkSweepCompact.CollectionTime"
               ]
             },
-
-            "14":{
+           "14":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "jvm_metrics",
-                "14",
-                "jvm.gc.Copy.CollectionCount"
+                "heap_memory",
+                "0",
+                "jvmHeapMemoryUsage"
               ]
             },
             "15":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "jvm_metrics",
-                "15",
-                "jvm.gc.Copy.CollectionTime"
-              ]
-            },
-            "16":{
-              "type":"timeline",
-              "style":"value",
-              "match":"all",
-              "metric":[
-                "jvm_metrics",
-                "16",
-                "jvm.gc.MarkSweepCompact.CollectionCount"
-              ]
-            },
-            "17":{
-              "type":"timeline",
-              "style":"value",
-              "match":"all",
-              "metric":[
-                "jvm_metrics",
-                "17",
-                "jvm.gc.MarkSweepCompact.CollectionTime"
-              ]
-            },
-            "18":{
-              "type":"timeline",
-              "style":"value",
-              "match":"all",
-              "metric":[
-                "jvm_metrics",
-                "18",
-                "jmxtrans.jmxtrans.CollectionCount"
-              ]
-            },
-            "19":{
-              "type":"timeline",
-              "style":"value",
-              "match":"all",
-              "metric":[
-                "jvm_metrics",
-                "19",
-                "jmxtrans.jmxtrans.CollectionDurationInNanos"
-              ]
-            },
-            "20":{
-              "type":"timeline",
-              "style":"value",
-              "match":"all",
-              "metric":[
-                "jvm_metrics",
-                "20",
-                "jmxtrans.jmxtrans.ExportDurationInNanos"
-              ]
-            },
-            "21":{
-              "type":"timeline",
-              "style":"value",
-              "match":"all",
-              "metric":[
-                "jvm_metrics",
-                "21",
-                "jmxtrans.jmxtrans.ExportCount"
-              ]
-            },
-            "22":{
-              "type":"timeline",
-              "style":"value",
-              "match":"all",
-              "metric":[
-                "jvm_metrics",
-                "22",
-                "jmxtrans.jmxtrans.CollectedMetricsCount"
-              ]
-            },
-            "23":{
-              "type":"timeline",
-              "style":"value",
-              "match":"all",
-              "metric":[
-                "jvm_metrics",
-                "23",
-                "jmxtrans.jmxtrans.ExportedMetricsCount"
+                "nonheap_memory",
+                "0",
+                "jvmNonHeapMemoryUsage"
               ]
             }
           },
-          "order":[ "0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
+          "order":[ "0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]
         }
       },
       {
-        "name":"tomcat_dash",
+        "name":"tomcat_dashboard",
         "data":{
           "widgets":{
             "0":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
+                "tomcat_global",
                 "0",
                 "tomcat.thread-pool.currentThreadsBusy"
               ]
             },
             "1":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
+                "tomcat_global",
                 "1",
                 "tomcat.thread-pool.currentThreadCount"
               ]
             },
             "2":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
+                "tomcat_global",
                 "2",
                 "tomcat.global-request-processor.bytesSent"
               ]
             },
             "3":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
+                "tomcat_global",
                 "3",
                 "tomcat.global-request-processor.bytesReceived"
               ]
             },
             "4":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
+                "tomcat_global",
                 "4",
               "tomcat.global-request-processor.processingTime"
               ]
             },
             "5":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
+                "tomcat_global",
                 "5",
                 "tomcat.global-request-processor.errorCount"
               ]
             },
             "6":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
+                "tomcat_global",
                 "6",
                 "tomcat.global-request-processor.requestCount"
               ]
             },
             "7":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
-                "7",
+                "tomcat_manager",
+                "0",
                 "tomcat.manager.activeSessions"
               ]
             },
             "8":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
-                "8",
+                "tomcat_servlet",
+                "0",
                 "tomcat.servlet.processingTime"
               ]
             },
             "9":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
-                "9",
+                "tomcat_servlet",
+                "1",
                 "tomcat.servlet.errorCount"
               ]
             },
             "10":{
               "type":"timeline",
-              "style":"value",
+              "style":"values",
               "match":"all",
               "metric":[
-                "tomcat_metrics",
-                "10",
+                "tomcat_servlet",
+                "2",
                 "tomcat.servlet.requestCount"
-              ]
-            },
-            "11":{
-              "type":"timeline",
-              "style":"value",
-              "match":"all",
-              "metric":[
-                "tomcat_metrics",
-                "11",
-                "tomcat.data-source.numActive"
-              ]
-            },
-            "12":{
-              "type":"timeline",
-              "style":"value",
-              "match":"all",
-              "metric":[
-                "tomcat_metrics",
-                "12",
-                "tomcat.data-source.numIdle"
               ]
             }
           },
-          "order":[ "0","1","2","3","4","5","6","7","8","9","10","11","12"]
+          "order":[ "0","1","2","3","4","5","6","7","8","9","10"]
         }
       }
     ]
   }
 }
-
