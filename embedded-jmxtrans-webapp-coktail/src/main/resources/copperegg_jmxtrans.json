@@ -17,10 +17,6 @@
                 {
                   "name": "ThreadCount",
                   "type": "gauge"
-                },
-                {
-                  "name": "DaemonThreadCount",
-                  "type": "gauge"
                 }
             ]
         }, 
@@ -75,7 +71,7 @@
         "settings": {
             "source": "${CopperEgg.source:#hostname#}",
             "username": "${CopperEgg.username:<YOUR_USER_NAME>}",
-            "token": "${CopperEgg.token:<YOUR_APIKEY>}",
+            "token": "${CopperEgg.token:<YOUR_API_KEY>}",
             "enabled": "${CopperEgg.enabled:true}"
         }
     }
