@@ -1,74 +1,60 @@
-# Embedded JmxTrans Samples with CopperEggWriter support
+# Using the CopperEggWriter Output Writer
 
-## Using the CopperEggWriter in the JxmTrans Cocktail Demo
+## Deploying with the Cocktail Demo App
 
-To easily enable the CopperEggWriter for the Cocktail Demo, CopperEgg has provided:  
- * a custom copperegg_config.json, and   
- * a custom copperegg_jmxtrans.json.  
-
-To run the demo, please follow these steps:
-
-### 1.Build embedded-jmxtrans with the CopperEgg fork of embedded-jmxtrans. Hopefully this fork will be short-lived, and the CopperEggWriter will be included in upcoming releases of embedded-jmxtrans.
-  
-  You can clone it and build as follows:
+### 1. Save a copy of your current resources/jmxtrans.json file
 
 ```xml
-git clone https://github.com/CopperEgg/embedded-jmxtrans.git
-cd embedded-jmxtrans
-mvn install dependency:go-offline
+    cd <path-to-embedded-jmxtrans-samples> 
+    mv embedded-jmxtrans-webapp-coktail/src/main/resources/jmxtrans.json embedded-jmxtrans-webapp-coktail/src/main/resources/jmxtrans.json.original
 ```
 
-### 2. Clone the CopperEgg fork of the embedded-jmxtrans-samples repo:
+### 2. Copy the CocktailDemo-specific copperegg_config.json and jmxtrans.json to resources/
 
 ```xml
-git clone https://github.com/CopperEgg/embedded-jmxtrans-samples.git
+    cd <path-to-embedded-jmxtrans-samples> 
+    cp embedded-jmxtrans-webapp-coktail/src/main/copperegg/copperegg_configCocktailApp/*.json embedded-jmxtrans-webapp-coktail/src/main/resources/
 ```
 
-### 3. Replace jmxtrans.json with copperegg_jmxtrans.json, then edit jmxtrans.json:
+### 3. Edit the (newly-copied) jmxtrans.json file
 
 ```xml
-cd embedded-jmxtrans-samples/embedded-jmxtrans-webapp-coktail/src/main/resources
-cp copperegg_jmxtrans.json jmxtrans.json
-edit jmxtrans.json
+    cd <path-to-embedded-jmxtrans-samples> 
+    nano embedded-jmxtrans-webapp-coktail/src/main/resources/jmxtrans.json
     In the "OutputWriters" array, find the CopperEggWriter settings.
         Replace  <YOUR_USER_NAME>  with your user name
         Replace  <YOUR_APIKEY> with your CopperEgg APIKEY
-Save and close jmxtrans.json
+    Optionally, add any other OutputWriters to the OutputWriters array.
+    Save and close jmxtrans.json
 ```
 
-### 4. Optionally, edit copperegg_config.json:
-
-This is not recommended, as this json file has been specifically created for the jmxtrans Cocktail Demo. 
-This config will create 3 metric groups:
- * Sample_jvm_metrics  
- * Sample_tomcat_metrics  
- * Sample_Cocktail_App_metrics  
-
-It will also create 3 dashboards:
- * Sample_jvm_dash  
- * Sample_tomcat_dash  
- * Sample_Cocktail_App
+### 4. Build and Deploy the Cocktail Demo App as usual.
 
 
-### 5. Build the Cocktail App Demo
+## Integrating with your Spring-enabled or Plain Java Servlet
+
+### 1. Save a copy of your current resources/jmxtrans.json file, as in Step 1 above
+
+### 2. Copy the copperegg_config.json and jmxtrans.json to resources/
 
 ```xml
-cd embedded-jmxtrans-samples
-mvn install dependency:go-offline
+    cp src/main/copperegg/*.json <path-to-your-resources-directory>
 ```
- 
-
-### 6. Copy your configured app into your Tomcat webapps directory: 
-
-```xml
-cp embedded-jmxtrans-webapp-coktail/target/cocktail-app-1.0.9-SNAPSHOT.war <CATALINA_HOME>/webapps/
-```
-
-If Tomcat is not already started, start it up.
-You should begin seeing metrics from you jvm, tomcat and the Cocktail Demo app within a minute or so.
+### 3. Edit the (newly-copied) jmxtrans.json file, as descibed in Step 3 above
 
 
-For documentation about the embedded-jmxtrans module, refer to:
+### 4. Follow the embedded-jmxtrans instructions for building and deploying
+
+For Spring integration:
+
+  [embedded-jmxtrans wiki](https://github.com/jmxtrans/embedded-jmxtrans/wiki/Spring-Integration)
+
+For Plain-Java-Servlet integration:
+
+  [embedded-jmxtrans wiki](https://github.com/jmxtrans/embedded-jmxtrans/wiki/Plain-Java-Servlet-Integration)
+
+
+For the documentation about the embedded-jmxtrans module, refer to:
 * [Documentation](https://github.com/jmxtrans/embedded-jmxtrans/wiki)
 * [Latest javadocs](http://jmxtrans.github.com/embedded-jmxtrans/apidocs/)
 
