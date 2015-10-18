@@ -23,7 +23,7 @@
     nano embedded-jmxtrans-webapp-coktail/src/main/resources/jmxtrans.json
     In the "OutputWriters" array, find the CopperEggWriter settings.
         Replace  <YOUR_USER_NAME>  with your user name
-        Replace  <YOUR_APIKEY> with your CopperEgg APIKEY
+        Replace  <YOUR_APIKEY> with your Uptime Cloud Monitor APIKEY
     Optionally, add any other OutputWriters to the OutputWriters array.
     Save and close jmxtrans.json
 ```
@@ -58,10 +58,10 @@ For the documentation about the embedded-jmxtrans module, refer to:
 * [Documentation](https://github.com/jmxtrans/embedded-jmxtrans/wiki)
 * [Latest javadocs](http://jmxtrans.github.com/embedded-jmxtrans/apidocs/)
 
-To learn more about CopperEgg, and to sign up for a free trial: 
-* [CopperEgg Homepage](http://www.copperegg.com)
-* [CopperEgg Signup](https://app.copperegg.com/signup)
-* [CopperEgg Login](https://app.copperegg.com/login)
+To learn more about Uptime Cloud Monitor, and to sign up for a free trial:
+* [Uptime Cloud Monitor Homepage] (https://www.idera.com/infrastructure-monitoring-as-a-service/)
+* [Uptime Cloud Monitor Signup] (https://www.idera.com/infrastructure-monitoring-as-a-service/freetrialsubscriptionform)
+* [Uptime Cloud Monitor Login] (https://app.copperegg.com/login)
 
 
 License
@@ -69,7 +69,7 @@ License
 
 Please refer to the LICENSE and NOTIFICATION files included by the authors of embedded-jmxtrans and embedded-jmxtrans-samples.
 
-CopperEgg has provided three JSON files in this repository, which can be used to configure the CopperEggWriter. 
+Uptime Cloud Monitor has provided three JSON files in this repository, which can be used to configure the CopperEggWriter.
 These files are made available under the terms of the MIT License:
 
 Permission is hereby granted, free of charge, to any person obtaining a
