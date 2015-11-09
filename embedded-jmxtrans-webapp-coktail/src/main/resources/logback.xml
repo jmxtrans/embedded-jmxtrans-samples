@@ -35,9 +35,8 @@
 
     <logger name="audit" level="TRACE" />
     <logger name="org.springframework.web" level="warn" />
-    <logger name="org.jmxtrans.embedded" level="warn" />
     <logger name="org.jmxtrans.embedded.output.Slf4jWriter" level="debug" />
-    <logger name="org.jmxtrans.embedded.spring.EmbeddedJmxTransFactory" level="trace" />
+    <logger name="org.jmxtrans.embedded" level="info" />
 
 
     <root level="warn">

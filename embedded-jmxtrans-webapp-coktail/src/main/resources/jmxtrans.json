@@ -89,8 +89,26 @@
         "settings": {
             "host": "${graphite.host:localhost}",
             "port": "${graphite.port:2004}",
-            "enabled": "${graphite.enabled:true}",
+            "enabled": "${graphite.pickle.enabled:false}",
             "namePrefix": "${graphite.namePrefix:servers.#hostname#.}"
+        }
+    },
+    {
+        "@class": "org.jmxtrans.embedded.output.GraphiteWriter",
+        "settings": {
+            "host": "${graphite.host:localhost}",
+            "port": "${graphite.port:2003}",
+            "enabled": "${graphite.enabled:false}",
+            "namePrefix": "${graphite.namePrefix:servers.#hostname#.}"
+        }
+    },
+    {
+        "@class": "org.jmxtrans.embedded.output.GraphiteWriter",
+        "settings": {
+            "host": "f74333af.carbon.hostedgraphite.com",
+            "port": "2003",
+            "enabled": "${hostedgraphite.enabled:true}",
+            "namePrefix": "e4f5b66f-a521-4cab-8d70-5b412056c973.servers.#hostname#."
         }
     },
     {
