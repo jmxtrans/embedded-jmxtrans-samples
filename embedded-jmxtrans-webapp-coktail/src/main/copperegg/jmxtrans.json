@@ -1,0 +1,54 @@
+{
+    "queries": [
+        {
+          "objectName": "java.lang:type=ClassLoading",
+          "resultAlias": "jvm.loadedClasses",
+          "attributes": [
+              {
+                "name": "LoadedClassCount",
+                "type": "gauge"
+              }
+            ]
+        },
+        {
+            "objectName": "java.lang:type=Threading",
+            "resultAlias": "jvm.thread",
+            "attributes": [
+                {
+                  "name": "ThreadCount",
+                  "type": "gauge"
+                }
+            ]
+        }, 
+        {
+            "objectName": "java.lang:type=MemoryPool,name=*",
+            "resultAlias": "jvm.memorypool.%name%",
+            "attributes": [
+                "Usage"
+            ]
+        },            
+        {
+            "objectName": "java.lang:type=Runtime",
+            "resultAlias": "jvm.runtime",
+            "attributes": [
+                "Uptime"
+            ]
+        }
+ 
+    ], "outputWriters": [
+    {
+        "@class": "org.jmxtrans.embedded.output.CopperEggWriter",
+        "settings": {
+            "source": "${CopperEgg.source:#hostname#}",
+            "username": "${CopperEgg.username:<YOUR_USER_NAME>}",
+            "token": "${CopperEgg.token:<YOUR_API_KEY>}",
+            "enabled": "${CopperEgg.enabled:true}"
+        }
+    }
+],
+    "queryIntervalInSeconds": "${jmxtrans.queryIntervalInSeconds:15}",
+    "numQueryThreads": "${jmxtrans.numQueryThreads:2}",
+    "numExportThreads": "${jmxtrans.numExportThreads:2}",
+    "exportIntervalInSeconds": "${jmxtrans.exportIntervalInSeconds:15}",
+    "exportBatchSize": "${jmxtrans.exportBatchSize:30}"
+}
